@@ -5,11 +5,28 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MutualFundTest {
+    @Test
+    void shouldGetName() {
+        MutualFund fund = new MutualFund("Test Fund", new HashSet<>());
+        String name = fund.getName();
+        assertEquals("Test Fund", name);
+    }
+
+    @Test
+    void shouldGetStocks() {
+        Set<String> stocks = new HashSet<>(Arrays.asList(
+                "INDRAPRASTHA GAS LIMITED",
+                "COLGATE - PALMOLIVE (INDIA) LIMITED"
+        ));
+        MutualFund fund = new MutualFund("Test Fund", stocks);
+
+        Set<String> returnedStocks = fund.getStocks();
+        assertEquals(stocks, returnedStocks);
+    }
 
     Set<String> stockList = new HashSet<>(Arrays.asList(
             "INDRAPRASTHA GAS LIMITED",

@@ -10,19 +10,18 @@ public class FundStoreRepository {
     private final String dataUrl;
     private final ObjectMapper objectMapper;
 
-    public FundStoreRepository(String url) {
-        dataUrl = url;
-        objectMapper = new ObjectMapper();
+    public FundStoreRepository(String url, ObjectMapper objectMapper) {
+        this.dataUrl = url;
+        this.objectMapper = objectMapper;
     }
 
     public FundStore fetch() {
-        FundStore fundStore = null;
         try {
             URL url = new URL(this.dataUrl);
-            fundStore =  objectMapper.readValue(url, FundStore.class);
+            return objectMapper.readValue(url, FundStore.class);
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(); //TODO
         }
-        return fundStore;
     }
 }

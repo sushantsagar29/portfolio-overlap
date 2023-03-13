@@ -32,12 +32,12 @@ public class MutualFund {
                 .collect(Collectors.toSet());
 
         int totalStocksCount = thisStockList.size() + toCompareStockList.size();
-        int uniqueStocksCount = uniqueStockList.size();
+        int commonStocksCount = totalStocksCount - uniqueStockList.size();
 
         DecimalFormat df = new DecimalFormat("#.##");
         df.setMinimumFractionDigits(2);
 
-        Double overlap = (200 * (double) (totalStocksCount - uniqueStocksCount) / totalStocksCount);
+        Double overlap = (200 * (double) commonStocksCount / totalStocksCount);
         return df.format(overlap);
     }
 }

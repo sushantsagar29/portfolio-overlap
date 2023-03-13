@@ -7,6 +7,7 @@ import com.example.domain.service.*;
 import com.example.infra.InputParser;
 import com.example.infra.model.Command;
 import com.example.service.OverlapService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,8 +15,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        ObjectMapper objectMapper = new ObjectMapper();
         OverlapService overlapService = new OverlapService();
-        MutualFundMap mutualFundMap = overlapService.initializeMutualFundMap(Constants.FUND_STORE_URL);
+        MutualFundMap mutualFundMap = overlapService.initializeMutualFundMap(Constants.FUND_STORE_URL, objectMapper);
 
         Path inputFilePath = Paths.get(args[0]);
         InputParser inputParser = new InputParser();

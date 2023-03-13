@@ -13,4 +13,12 @@ public class MutualFundDto {
     public Set<String> getStocks() {
         return stocks;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStocks(Set<String> stocks) {
+        this.stocks = stocks;
+    }
 }
