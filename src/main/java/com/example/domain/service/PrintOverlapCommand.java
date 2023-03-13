@@ -37,7 +37,7 @@ public class PrintOverlapCommand implements PortfolioCommand {
                         String overlapPercent = mutualFund.calculateOverLapWith(fundToCompare);
 
                         if (Double.parseDouble(overlapPercent) > 0){
-                            printer.print(String.format("%s %s %s %%", fundToCompare.getName(), mutualFund.getName(), overlapPercent));
+                            printer.print(String.format("%s %s %s%%", fundToCompare.getName(), mutualFund.getName(), overlapPercent));
                         }
                     });
         } catch (FundNotFoundException exception) {

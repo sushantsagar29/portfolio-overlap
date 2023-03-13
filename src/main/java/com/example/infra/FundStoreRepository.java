@@ -1,5 +1,6 @@
 package com.example.infra;
 
+import com.example.exception.FundStoreMappingException;
 import com.example.infra.model.FundStore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,8 +21,7 @@ public class FundStoreRepository {
             URL url = new URL(this.dataUrl);
             return objectMapper.readValue(url, FundStore.class);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(); //TODO
+            throw new FundStoreMappingException(e.getMessage());
         }
     }
 }

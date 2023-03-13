@@ -6,7 +6,9 @@ import com.example.infra.model.MutualFundDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,10 +21,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FundStoreRepositoryTest {
     FundStore fundStore;
     FundStoreRepository fundStoreRepository;
+    @Mock
     ObjectMapper objectMapperMock;
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.initMocks(this);
+
         fundStore = new FundStore();
         MutualFundDto mutualFundDto1 = new MutualFundDto();
         mutualFundDto1.setName("fund1");
@@ -32,7 +37,6 @@ class FundStoreRepositoryTest {
         mutualFundDto2.setStocks(stocks2);
         fundStore.setFunds(Arrays.asList(mutualFundDto1, mutualFundDto2));
 
-        objectMapperMock = Mockito.mock(ObjectMapper.class);
         fundStoreRepository = new FundStoreRepository(Constants.FUND_STORE_URL, objectMapperMock);
     }
 

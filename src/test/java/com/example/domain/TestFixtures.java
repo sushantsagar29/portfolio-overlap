@@ -16,4 +16,9 @@ public class TestFixtures {
             "stock3",
             "stock4"
     ));
+
+    public static final Set<String> stocks3 = new HashSet<>(Arrays.asList(
+            "stock1",
+            "stock4"
+    ));
 }

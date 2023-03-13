@@ -8,4 +8,5 @@ public final class Constants {
     public static final String FUND_STORE_URL = "https://geektrust.s3.ap-southeast-1.amazonaws.com/portfolio-overlap/stock_data.json";
     public static final String SPACE = " ";
     public static final String FUND_NOT_FOUND = "FUND_NOT_FOUND";
+    public static final String COMMAND_TYPE_NOT_SUPPORTED = "COMMAND_TYPE_NOT_SUPPORTED";
 }

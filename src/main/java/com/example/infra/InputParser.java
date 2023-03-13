@@ -2,6 +2,7 @@ package com.example.infra;
 
 import com.example.constants.Constants;
 import com.example.exception.MalformedInputFileException;
+import com.example.exception.UnsupportedCommandException;
 import com.example.infra.model.Command;
 import com.example.infra.model.CommandType;
 
@@ -29,9 +30,12 @@ public class InputParser {
         return new Command(convertLineToCommandType(line), convertLineToArguments(line));
     }
 
-    // handle unknown command type
     private CommandType convertLineToCommandType(String line) {
-        return CommandType.valueOf(line.split(Constants.SPACE)[0]);
+        try {
+            return CommandType.valueOf(line.split(Constants.SPACE)[0]);
+        } catch (IllegalArgumentException e) {
+            throw new UnsupportedCommandException(line);
+        }
     }
 
     private List<String> convertLineToArguments(String line) {

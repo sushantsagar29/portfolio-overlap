@@ -7,15 +7,19 @@ public class CommandFactory {
     private final CurrentPortfolioCommand currentPortfolioCommand;
     private final AddStockCommand addStockCommand;
     private final PrintOverlapCommand printOverlapCommand;
+    private final UnsupportedCommand unsupportedCommand;
 
-    public CommandFactory(CurrentPortfolioCommand currentPortfolioCommand, AddStockCommand addStockCommand, PrintOverlapCommand printOverlapCommand) {
+    public CommandFactory(CurrentPortfolioCommand currentPortfolioCommand,
+                          AddStockCommand addStockCommand,
+                          PrintOverlapCommand printOverlapCommand,
+                          UnsupportedCommand unsupportedCommand) {
         this.currentPortfolioCommand = currentPortfolioCommand;
         this.addStockCommand = addStockCommand;
         this.printOverlapCommand = printOverlapCommand;
+        this.unsupportedCommand = unsupportedCommand;
     }
 
-    // handle unknown command
-    public PortfolioCommand fetchCommandExecuter(Command command){
+    public PortfolioCommand fetchCommandExecuter(Command command) {
         switch (command.getCommandType()) {
             case CURRENT_PORTFOLIO:
                 return currentPortfolioCommand;
@@ -24,7 +28,7 @@ public class CommandFactory {
             case ADD_STOCK:
                 return addStockCommand;
             default:
-                return null;
+                return unsupportedCommand;
         }
     }
 }
